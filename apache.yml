@@ -1,0 +1,36 @@
+- hosts: kubnode
+  become: true
+  vars:
+    - ports: 9090
+
+  tasks:
+    - name: installing apache
+      yum:
+        name: ['httpd','httpd-tools']
+        state: "installed"
+
+    - name: disabling selinux 
+      selinux:
+        state: "disabled"
+
+    - name: copying httpd.conf to /etc folder
+      template:
+        src: "httpd.conf.j2"
+        dest: "/etc/httpd/conf/httpd.conf"
+      notify: apache_restart
+
+    - name: Copying the index.html to html folder
+      copy:
+        src: "index.html"
+        dest: "/var/www/html/"
+
+    - name: service restarted
+      service:
+        name: "httpd"
+        state: "started"
+
+  handlers:
+    - name: apache_restart
+      service:
+        name: "httpd"
+        state: "restarted"
