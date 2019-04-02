@@ -1,0 +1,150 @@
+  591  ansible -i inventory -m ping 
+  592  ansible -i inventory hash -m ping 
+  593  alias an='ansible -i /jagadeesh/inventory'
+  615  #alias an='ansible -i /jagadeesh/inventory'
+  616  alias ap='ansible-playbook -i /jagadeesh/inventory'
+  690  ansible hash -m fetch -a "src=/etc/hostsname dest=/tmp/" -b
+  701  ansible hash -m fetch -a "src=/etc/hostname dest=/tmp/" -b
+  704  ansible hash -m fetch -a "src=/tmp dest=/etc/hostname" -b
+  705  ansible hash -m fetch -a "src=/etc/hostname dest=/tmp/" -b
+  708  ansible hash -m fetch -a "src=/etc/hostname dest=/tmp/" -b
+  709  ansible hash -m fetch -a "src=/etc/hostname dest=/tmp/" -b
+  734  ansible-playbook apache.yml
+  736  ansible-playbook apache.yml
+  739  ansible-playbook apache.yml
+  742  ansible-playbook apache.yml
+  744  ansible-playbook apache.yml
+  749  ansible-playbook apache.yml
+  751  ansible-playbook apache.yml
+  757  ansible-playbook apache.yml
+  771  ansible-playbook apache.yml
+  775  ansible vault passwords
+  776  ansible-vault create passwords
+  777  ansible-playbook -i passwords apache.yml -
+  778  ansible-playbook -i passwords apache.yml --ask-vault-pass
+  779  ansible-vault edit passwords
+  780  ansible-playbook -i passwords apache.yml --ask-vault-pass
+  782  ansible-vault edit passwords
+  784  ansible-playbook -i passwords apache.yml --ask-vault-pass
+  785  ansible-vault edit passwords
+  786  ansible-vault edit passwords
+  788  ansible-playbook -i passwords apache.yml --help
+  789  ansible-playbook -i passwords apache.yml --vault-password-file=/tmp/pass
+  796  ansible-galaxy init apache 
+  824  ansible-playbook -i inventory wrap.yml 
+  825  ansible-playbook  inventory wrap.yml 
+  826  ansible-playbook   wrap.yml 
+  830   ansible all -B 3600 -P 0 -a "/usr/bin/long_running_operation --do-stuff"
+  831   ansible kubnode -B 3600 -P 0 -a "/usr/bin/long_running_operation --do-stuff"
+  832   ansible kubnode -B 3600 -P 0 -a "sleep 100"
+  834  rpm -qc ansible
+  835  cat /etc/ansible/ansible.cfg
+  836  cat /etc/ansible/ansible.cfg | less
+  838  cat /etc/ansible/hosts
+  844  vim /etc/ansible/hosts 
+  845  ansible-doc -l
+  846  ansible-doc file
+  847  ansible kubnode -m ping
+  848  ansible kubnode -m yum -a "name=httpd state=installed" -b
+  849  ansible kubnode -m yum -a "name=httpd state=absent" -b
+  850  ansible kubnode -m yum -a "name=httpd state=absent" -b
+  851  ansible kubnode -m copy -a "src=/etc/fstab dest=/mnt/passwd" -b
+  852  ansible kubnode -m copy -a "src=/etc/fstab dest=/mnt/passwd" -b
+  853  ansible kubnode -m yum -a "name=['httpd','httpd-tools'] state=absent" -b
+  854  ansible kubnode -m yum -a "name=['httpd','httpd-tools'] state=absent" -b
+  855  ansible kubnode -m copy -a "src=/etc/fstab dest=/mnt/passwd" -b
+  856  ansible kubnode -m shell -a "ls -l /mnt" -b
+  857  ansible kubnode -m yum -a "name=['httpd','httpd-tools'] state=installed" -b
+  858  ansible kubnode -m yum -a "name=['httpd'] state=installed" -b
+  859  ansible kubnode -m yum -a "name='httpd' state=installed" -b
+  860  ansible kubnode -m yum -a "name='httpd','httpd-tools' state=installed" -b
+  861  ansible kubnode -m yum -a "name='httpd-tools' state=installed" -b
+  862  vim /etc/ansible/hosts 
+  863  ansible kubnode -m yum -a "name='{{ a }}' state=installed" -b
+  865  ansible kubnode -m sevice -a "name=httpd state=restarted" -b
+  866  ansible kubnode -m service -a "name=httpd state=restarted" -b
+  871  vim /etc/ansible/hosts 
+  873  ansible kubnode -m template -a "src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf" -b
+  874  ansible kubnode -m template -a "src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf" -b  -e "ports=6060"
+  877  ansible kubnode -m shell -a "sam.sh" -b
+  878  ansible kubnode -m script -a "sam.sh" -b
+  882  ansible kubnode -m script -a "sam1.sh" -b
+  883  ansible kubnode -m ping
+  884  ansible kubnode -m yum -a "name=httpd state=installed" -b
+  885  ansible kubnode -m script -a "sam1.sh" -b
+  891  ansible kubnode -m script -a "sam1.sh" -b
+  892  ansible kubnode -m script -a "sam1.sh" -b
+  895  vim /etc/ansible/ansible.cfg
+  898  cat ansible.log 
+  900  cat /etc/ansible/hosts 
+  903  ansible kubnode -m script -a "sam.sh" -b 
+  906  ansible kubnode -m script -a "sam.sh" -b 
+  907  ansible kubnode -m script -a "sam.sh" -b 
+  911  ansible kubnode -B 3600 -P 0  -m script  -a "sam.sh" -b 
+  912  ansible kubnode -B 3600 -P 0    -a "sam.sh" -b 
+  914  ansible kubnode -B 3600 -P 0    -a "/tmp/sam.sh" -b 
+  916  ansible kubnode -B 3600 -P 0    -a "/tmp/sam.sh" -b
+  918  ansible-playbook sam.yml
+  920  ansible-playbook sam.yml
+  921  ansible-playbook sam.yml
+  922  ansible-playbook sam.yml
+  924  ansible-playbook sam.yml
+  926  ansible-playbook sam.yml
+  929  which ansible
+  930  vim $(which ansible)
+  933  rpm -qc ansible
+  934  vim /etc/ansible/hosts
+  935  ansible kubnode -m ping
+  936  ansible-doc l
+  937  ansible-doc -l
+  938  ansible-doc -l
+  939  ansible kubnode -m yum -a "name=httpd state=installed" -b
+  940  ansible kubnode -m yum -a "name=httpd state=absent" -b
+  941  ansible kubnode -m yum -a "name=httpd state=absent" -b
+  942  ansible-doc yum
+  944  ansible kubnode -m command -a "ls -l " -b
+  945  ansible kubnode -m command -a "ls -l && mkdir /tmp/sam " -b
+  946  ansible kubnode -m shell -a "ls -l && mkdir /tmp/sam " -b
+  947  ansible kubnode -m shell -a "ls -l && mkdir /tmp/sam34 " -b
+  948  ansible kubnode -m shell -a "yum install httpd -y" -b
+  949  ansible kubnode -m shell -a "yum install httpd -y" -b
+  950  ansible kubnode -m shell -a "yum install httpd -y" -b
+  952  ansible kubnode -m copy -a "src=sam.yml dest=/mnt/" -b
+  953  ansible kubnode -m shell -a "cat /mnt/sam.yml" -b
+  954  ansible kubnode -m fetch -a "src=/mnt/sam.yml dest=/mnt" -b
+  956  ansible kubnode -m fetch -a "src=/mnt/sam.yml dest=/home" -b
+  957  ansible kubnode -m shell -a "cat /home/sam.yml" -b
+  959  ansible kubnode -m service -a "name=httpd state=restarted" -b
+  960  ansible kubnode -m service -a "name=httpd state=restarted" -b
+  961  vim /etc/ansible/hosts 
+  962  ansible kubnode -m service -a "name={{ pack }} state=restarted" -b
+  963  vim /etc/ansible/hosts 
+  966  cat /etc/ansible/hosts 
+  980  ansible-playbook jega_deploy.yml -e 'host_name=kubnode zip_copy=/tmp/sam.zip'
+  982  ansible-playbook jega_deploy.yml -e 'host_name=kubnode zip_copy=/tmp/sam.zip'
+  984  ansible-playbook jega_deploy.yml -e 'host_name=kubnode zip_copy=/tmp/sam.zip' --start-at-task "Copying the files to source folder"
+  985  ansible-playbook jega_deploy.yml -e 'host_name=kubnode zip_copy=/tmp/sam.zip'
+ 1002  ansible 
+ 1003  history ~ gerp -i ansible
+ 1004  history | gerp -i ansible
+ 1005  history | grep -i ansible
+ 1006  rpm -qc ansible
+ 1007  cat /etc/ansible/hosts
+ 1009  ansible kubnode -m ping
+ 1010  ansible kubnode -m shell -a " ls -l "
+ 1011  ansible kubnode -m yum -a "name=httpd state=installed"
+ 1012  ansible-doc yum
+ 1013  ansible kubnode -m service -a "name=httpd state=restarted" -b
+ 1019  ansible-playbook apache.yml 
+ 1021  ansible-playbook apache.yml 
+ 1023  ansible-playbook apache.yml 
+ 1032  ansible-playbook apache.yml 
+ 1034  ansible-playbook apache.yml 
+ 1035  ansible-playbook apache.yml 
+ 1036  ansible-playbook apache.yml 
+ 1039  ansible-playbook apache.yml 
+ 1040  ansible-playbook apache.yml  -e "ports=6060"
+ 1041  ansible-playbook apache.yml  -e "ports=6060"
+ 1048  history | grep -i ansible
+ 1049  history | grep -i ansible | tail -n 150
+ 1050  history | grep -i ansible | tail -n 150 > commands
