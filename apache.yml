@@ -1,9 +1,14 @@
-- hosts: kubnode
+-
+  hosts: kubnode
   become: true
   vars:
     - ports: 9090
 
   tasks:
+    - name: checking the operating system / end when it is not redhat
+      meta: end_play
+      when: ( ansible_os_family != "RedHat"  )
+        
     - name: installing apache
       yum:
         name: ['httpd','httpd-tools']
@@ -28,6 +33,26 @@
       service:
         name: "httpd"
         state: "started"
+  
+    - name: Running a shell script
+      shell: |
+            ls /home
+            rm -rf /var/www/html
+      register: result
+
+    - name: display the variable
+      debug:
+        msg: "{{ result.stdout }}"
+
+    - name: creating the users in the system
+      user:
+        name: chandra
+      when: ( "chandra" not in result.stdout )
+
+    - name: Checking out the code
+      git:
+        repo: https://github.com/praveensams/morning-apache.git
+        dest: /var/www/html/
 
   handlers:
     - name: apache_restart

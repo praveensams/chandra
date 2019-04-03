@@ -1,0 +1,5 @@
+- hosts: kubnode
+  become: true
+
+  roles:
+    - "apache"
