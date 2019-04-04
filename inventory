@@ -1,0 +1,12 @@
+
+[dev]
+kubnode  ansible_ssh_host=192.168.33.120  ansible_ssh_user=vagrant ansible_ssh_pass='vagrant' b=20 pack="httpd"
+kubnode1  ansible_ssh_host=192.168.33.120  ansible_ssh_user=vagrant ansible_ssh_pass='vagrant' b=20 pack="httpd"
+#kublocal  ansible_ssh_host=127.0.0.1  ansible_ssh_user=vagrant ansible_ssh_pass='vagrant' 
+
+[dev:vars]
+a="httpd"
+ports=8080
+
+[test]
+192.168.33.201

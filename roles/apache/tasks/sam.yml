@@ -1,0 +1,6 @@
+- name: just printing
+  debug:
+    msg: "{{ passe }}"
+
+
+  

@@ -6,6 +6,23 @@
     name: "{{pack}}"
     state: "installed"
 
+
+- name: checking the error and exceptions
+  block:
+    - name: Hostname of the machine
+      shell: |
+           hostname
+      register: result
+      delegate_to: localhost
+  rescue:
+    - name: playing the rescue
+      debug:
+        msg: "command is failed"
+    
+- name: setfacts
+  set_fact:
+    passe: "{{ result.stdout }}" 
+
 - name: Copying the index.html
   copy:
     src: "index.html"
@@ -22,3 +39,11 @@
     name: "httpd"
     state: "started"
  
+
+- name: adding a subprogram
+  import_tasks: sam.yml
+
+- name: checking the results
+  debug:
+    msg: "command failed"
+  when: result is failed 

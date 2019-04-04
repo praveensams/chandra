@@ -1,5 +1,5 @@
-- hosts: kubnode
+- hosts: dev
   become: true
 
   roles:
-    - "apache"
+    - { role: "apache", "ports": 9090 }
